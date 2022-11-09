@@ -1,6 +1,5 @@
 import React from 'react';
 import StartPage from './components/startPage';
-import Menu from './components/Menu';
 import Users from './components/Users';
 import Album from './components/Album';
 import UserDetails from './components/UserDetails';
@@ -16,7 +15,6 @@ const App = () => {
   return (
     <div className="App">
       <div className={styles.wrapper}>
-        <Menu />
         <Routes>
           <Route exact path="/" element={<StartPage />} />
           <Route exact path="/users" element={<Users />} />
