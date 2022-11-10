@@ -2,18 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
   useLocation
 } from "react-router-dom";
-import Albums from './Albums';
+import { useSelector, useDispatch } from 'react-redux'
 
+import Albums from './Albums';
 import styles from './styles.module.css';
 
 const UserDetails = () => {
   const [userData, setUserData] = useState(null)
-  const location = useLocation()
+  const userId = useSelector((state) => state.userId)
 
   useEffect(() => {
-    console.log('location.search', location.search)
-    const userId = location.search.replace('?userId=', '');
-
     const getData = async () => {
       const result = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         .then(response => response.json())

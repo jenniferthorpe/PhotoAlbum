@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
   useNavigate,
 } from "react-router-dom";
-import Card from './Card';
 import cn from 'classnames';
+import { useDispatch } from 'react-redux'
+import { setUser } from '../features/userSlice'
 
+import Card from './Card';
 import styles from './styles.module.css';
 
 const Users = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -25,7 +28,8 @@ const Users = () => {
   }, []);
 
   const handleOnClick = (id) => {
-    navigate(`/user?userId=${id}`)
+    dispatch(setUser(id))
+    navigate('/user')
   };
 
   if (!userData) {

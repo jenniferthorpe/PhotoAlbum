@@ -3,18 +3,18 @@ import {
   useLocation,
   useNavigate
 } from "react-router-dom";
-import Card from './Card';
+import { useSelector } from 'react-redux'
 
+import Card from './Card';
+import Photos from './Photos';
 import styles from './styles.module.css';
 
 const Albums = () => {
   const [albums, setAlbums] = useState(null);
-  const location = useLocation();
   const navigate = useNavigate();
+  const userId = useSelector((state) => state.userId)
 
   useEffect(() => {
-    const userId = location.search.replace('?userId=', '');
-
     const getAlbums = async () => {
       const result = await fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
         .then(response => response.json())
@@ -27,8 +27,8 @@ const Albums = () => {
     getAlbums();
   }, []);
 
-  const handleOnClick = () => {
-    navigate('/photos');
+  const handleOnClick = (albumTitle, id) => {
+    navigate('/photos', { state: { albumTitle, id } })
   };
 
   if (!albums) {
@@ -41,7 +41,7 @@ const Albums = () => {
         <Card
           albumName={title}
           key={id}
-          onClick={handleOnClick}
+          onClick={() => handleOnClick(title, id)} //Title might not be needed as an arg. Get from api?
         />
       ))}
     </div >
