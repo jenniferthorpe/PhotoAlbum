@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {
-  useLocation,
   useNavigate,
-  useParams,
 } from "react-router-dom";
-import UserOverview from './UserOverview';
+import Card from './Card';
 import cn from 'classnames';
 
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
-const Users = (props) => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [userData, setUserData] = useState(null)
+const Users = () => {
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     if (!userData) {
@@ -25,15 +22,15 @@ const Users = (props) => {
 
       getData();
     }
-  }, [])
+  }, []);
 
   const handleOnClick = (id) => {
-    navigate(`/user-details?${id}`)
-  }
+    navigate(`/user?userId=${id}`)
+  };
 
   if (!userData) {
     return null;
-  }
+  };
 
   return (
     <>
@@ -42,14 +39,14 @@ const Users = (props) => {
 
       <h1>Users</h1>
       <div className={cn(styles.divider, styles.transparent)} />
-      <div className={styles.userList}>
-        {console.log('USER DATA', userData)}
-        {userData.map(({ name, company: { name: companyName }, email, id }) => (
-          <UserOverview
-            userName={name}
-            company={companyName}
-            email={email}
-            onClick={() => handleOnClick(id)}
+      <div className={styles.cardList}>
+        {userData.map((userData) => (
+          <Card
+            userName={userData.name}
+            company={userData.company?.name}
+            email={userData.email}
+            onClick={() => handleOnClick(userData.id)}
+            key={userData.id}
           />
         ))}
       </div>

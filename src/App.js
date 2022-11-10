@@ -1,7 +1,6 @@
 import React from 'react';
-import StartPage from './components/startPage';
 import Users from './components/Users';
-import Album from './components/Album';
+import Photos from './components/Photos';
 import UserDetails from './components/UserDetails';
 import styles from './styles.module.css';
 import {
@@ -16,10 +15,9 @@ const App = () => {
     <div className="App">
       <div className={styles.wrapper}>
         <Routes>
-          <Route exact path="/" element={<StartPage />} />
-          <Route exact path="/users" element={<Users />} />
-          <Route path="/user-details" element={<UserDetails />} />
-          <Route path="/album" element={<Album />} />
+          <Route path="/" element={<Users />} />
+          <Route path="/user" element={<UserDetails />} />
+          <Route path="/photos" element={<Photos />} />
         </Routes>
       </div>
     </div>
