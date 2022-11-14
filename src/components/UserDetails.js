@@ -9,14 +9,14 @@ import styles from './styles.module.css';
 
 const UserDetails = () => {
   const [userData, setUserData] = useState(null)
-  const userId = useSelector((state) => state.userId)
+  const userId = useSelector(state => state.userId)
 
   useEffect(() => {
     const getData = async () => {
       const result = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-        .then(response => response.json())
+        .then(response => response.json());
 
-      setUserData(result)
+      setUserData(result);
     }
 
     getData();
@@ -43,12 +43,11 @@ const UserDetails = () => {
     <div className={styles.wrapper}>
       <h1 className={styles.userName}>{name}</h1>
       <div className={styles.userInfo}>
-        {companyName}
-        <div className={styles.shortDivider}></div>
-        {email}
-        <div className={styles.shortDivider}></div>
-        {street}, {zipcode} {city}
+        <span>{companyName}</span>
+        <span>{email}</span>
+        <span>{street}, {zipcode} {city}</span>
       </div>
+
       <h1>Albums</h1>
       <Albums />
     </div>

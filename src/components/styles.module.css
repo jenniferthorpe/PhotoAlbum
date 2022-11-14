@@ -1,7 +1,23 @@
+@media screen and (max-width: 960px) {
+  .userInfo>span:nth-child(2n):before {
+    display: none;
+  }
+
+  .userInfo>span:nth-child(3n):before {
+    display: none;
+  }
+
+  .userInfo {
+    flex-direction: column;
+  }
+}
+
 body {
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   width: 75vw;
   margin: 20px auto;
+  min-width: 800px;
+  max-width: 1000px;
 }
 
 h1 {
@@ -31,16 +47,22 @@ h1 {
 
 .card {
   background-color: lightblue;
-  width: 200px;
+  width: 250px;
   padding: 20px;
   border-radius: 5px;
   margin: 10px 20px 10px 0;
+  position: relative;
 }
 
 .card>div {
   color: darkblue;
 }
 
+.icon {
+  width: 15px;
+  position: absolute;
+  right: 20px;
+}
 
 .text>div {
   padding-bottom: 2px;
@@ -57,19 +79,21 @@ h1 {
   color: rgb(75, 75, 75);
   align-items: center;
   margin: 10px auto 100px;
-  width: 75%;
+  max-width: 800px;
+}
+
+.userInfo>span:nth-child(2n):before {
+  content: '—';
+  margin: 0 30px;
+}
+
+.userInfo>span:nth-child(3n):before {
+  content: '—';
+  margin: 0 50px;
 }
 
 .userName {
   text-align: center;
-}
-
-.shortDivider {
-  display: inline-block;
-  width: 10px;
-  height: 1px;
-  background: rgb(187, 187, 187);
-  position: relative;
 }
 
 .thumbnailWrapper {
@@ -108,15 +132,27 @@ h1 {
   z-index: 3;
 }
 
-
-@media screen and (max-width: 1200px) {
-  .userInfo {
-    width: 100%
-  }
+.breadcrumb {
+  width: 100%;
+  height: 37px;
+  background-color: rgb(238, 238, 238);
+  line-height: 35px;
 }
 
-@media screen and (max-width: 1000px) {
-  .userInfo {
-    flex-direction: column;
-  }
+.breadcrumb>a {
+  text-decoration: none;
+  margin: 0 0 0 10px;
+  color: blue;
+}
+
+.breadcrumb>a:nth-child(2n)::before {
+  content: '/';
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.breadcrumb>a:nth-child(3n)::before {
+  content: '/';
+  display: inline-block;
+  margin-right: 10px;
 }

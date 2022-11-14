@@ -19,7 +19,6 @@ const Photos = () => {
     const getPhotos = async () => {
       const result = await fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${location?.state?.id}`)
         .then(response => response.json())
-        .then(data => data)
         .catch(err => console.error(err)); //CHECK THIS
 
       setPhotos(result);
@@ -44,8 +43,8 @@ const Photos = () => {
   if (!photos) {
     return null;
   };
-  console.log('PHOTOS', photos)
-  return (//add image component //add title component
+
+  return (//TODO: add title component
     <div>
       <h1>{location.state.albumTitle}</h1>
       <div className={styles.thumbnailWrapper}>

@@ -3,22 +3,23 @@ import {
   useLocation,
   useNavigate
 } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Card from './Card';
 import Photos from './Photos';
 import styles from './styles.module.css';
+import { setAlbumName } from '../features/userSlice';
 
 const Albums = () => {
   const [albums, setAlbums] = useState(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userId = useSelector((state) => state.userId)
+  const userId = useSelector(state => state.userId)
 
   useEffect(() => {
     const getAlbums = async () => {
       const result = await fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
         .then(response => response.json())
-        .then(data => data)
         .catch(err => console.error(err)); //CHECK THIS
 
       setAlbums(result);
@@ -28,7 +29,9 @@ const Albums = () => {
   }, []);
 
   const handleOnClick = (albumTitle, id) => {
-    navigate('/photos', { state: { albumTitle, id } })
+    dispatch(setAlbumName(albumTitle));
+    const albumStripped = albumTitle.replace(/\s+/g, '');
+    navigate(`/user-profile/${albumStripped}`, { state: { albumTitle, id } })
   };
 
   if (!albums) {
