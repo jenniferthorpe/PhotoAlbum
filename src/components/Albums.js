@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {
-  useLocation,
   useNavigate
 } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 
 import Card from './Card';
-import Photos from './Photos';
-import styles from './styles.module.css';
 import { setAlbumName } from '../features/userSlice';
+import styles from './styles.module.css';
 
 const Albums = () => {
   const [albums, setAlbums] = useState(null);

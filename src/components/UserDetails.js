@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {
-  useLocation
-} from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Albums from './Albums';
+import Title from './Title';
 import styles from './styles.module.css';
 
 const UserDetails = () => {
@@ -39,16 +37,16 @@ const UserDetails = () => {
     } = {}
   } = userData;
 
-  return ( // TODO: SEPERATE CSS
+  return (
     <div className={styles.wrapper}>
-      <h1 className={styles.userName}>{name}</h1>
+      <Title center semiBold margin>{name}</Title>
       <div className={styles.userInfo}>
         <span>{companyName}</span>
         <span>{email}</span>
         <span>{street}, {zipcode} {city}</span>
       </div>
 
-      <h1>Albums</h1>
+      <Title margin>Albums</Title>
       <Albums />
     </div>
   )

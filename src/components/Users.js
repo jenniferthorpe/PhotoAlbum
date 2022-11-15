@@ -3,16 +3,17 @@ import {
   useNavigate,
 } from "react-router-dom";
 import cn from 'classnames';
-import { useDispatch, useSelector } from 'react-redux'
-import { setUserId, setUserName, saveFavorites, removeFavorites } from '../features/userSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
+import { setUserId, setUserName, saveFavorites, removeFavorites } from '../features/userSlice';
+import Title from './Title';
 import Card from './Card';
 import styles from './styles.module.css';
 
 const Users = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const getFavorites = useSelector(state => state.favorites)
+  const getFavorites = useSelector(state => state.favorites);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -22,25 +23,25 @@ const Users = () => {
           .then(response => response.json())
 
         setUserData(result)
-      }
+      };
 
       getData();
     }
   }, []);
 
   const handleOnClick = (id, name) => {
-    dispatch(setUserId({ id }))
-    dispatch(setUserName({ name }))
-    navigate('/user-profile')
+    dispatch(setUserId({ id }));
+    dispatch(setUserName({ name }));
+    navigate('/user-profile');
   };
 
   const handleAddFavorite = (id) => {
     if (getFavorites.includes(id)) {
-      dispatch(removeFavorites({ id }))
+      dispatch(removeFavorites({ id }));
       return;
     }
 
-    dispatch(saveFavorites({ id }))
+    dispatch(saveFavorites({ id }));
   }
 
   if (!userData) {
@@ -49,7 +50,7 @@ const Users = () => {
 
   return (
     <>
-      <h1>Favorites</h1>
+      <Title margin>Favorites</Title>
       <div className={cn(styles.divider, styles.transparent)} />
 
       <div className={styles.cardList}>
@@ -66,7 +67,7 @@ const Users = () => {
         ))}
       </div>
 
-      <h1>Users</h1>
+      <Title margin>Users</Title>
       <div className={cn(styles.divider, styles.transparent)} />
 
       <div className={styles.cardList}>
