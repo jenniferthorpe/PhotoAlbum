@@ -3,8 +3,8 @@ import {
   useNavigate,
 } from "react-router-dom";
 import cn from 'classnames';
-import { useDispatch } from 'react-redux'
-import { setUserId, setUserName } from '../features/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUserId, setUserName, saveFavorites, removeFavorites } from '../features/userSlice'
 
 import Card from './Card';
 import styles from './styles.module.css';
@@ -12,6 +12,7 @@ import styles from './styles.module.css';
 const Users = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const getFavorites = useSelector(state => state.favorites)
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -33,6 +34,15 @@ const Users = () => {
     navigate('/user-profile')
   };
 
+  const handleAddFavorite = (id) => {
+    if (getFavorites.includes(id)) {
+      dispatch(removeFavorites({ id }))
+      return;
+    }
+
+    dispatch(saveFavorites({ id }))
+  }
+
   if (!userData) {
     return null;
   };
@@ -42,16 +52,33 @@ const Users = () => {
       <h1>Favorites</h1>
       <div className={cn(styles.divider, styles.transparent)} />
 
-      <h1>Users</h1>
-      <div className={cn(styles.divider, styles.transparent)} />
       <div className={styles.cardList}>
-        {userData.map((userData) => (
+        {userData.filter(data => getFavorites.includes(data.id)).map((userData) => (
           <Card
             userName={userData.name}
             company={userData.company?.name}
             email={userData.email}
+            id={userData.id}
             onClick={() => handleOnClick(userData.id, userData.name)}
             key={userData.id}
+            addFavorite={() => handleAddFavorite(userData.id)}
+          />
+        ))}
+      </div>
+
+      <h1>Users</h1>
+      <div className={cn(styles.divider, styles.transparent)} />
+
+      <div className={styles.cardList}>
+        {userData.filter(data => !getFavorites.includes(data.id)).map((userData) => (
+          <Card
+            userName={userData.name}
+            company={userData.company?.name}
+            email={userData.email}
+            id={userData.id}
+            onClick={() => handleOnClick(userData.id, userData.name)}
+            key={userData.id}
+            addFavorite={() => handleAddFavorite(userData.id)}
           />
         ))}
       </div>

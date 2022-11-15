@@ -1,20 +1,26 @@
 import React from 'react';
-import icon from '../images/Vector-Star.png'
-import star from '../images/star.svg'
+import star from '../images/Vector-Star_adobe_express.svg'
+import starFill from '../images/Vector-Star-fill_adobe_express.svg'
+import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
 
-const Card = ({ userName, company, email, id, isFavorite, onClick, albumName }) => {
-  const handleOnClick = () => {
-    onClick()
+const Card = ({ userName, company, email, id, onClick, albumName, addFavorite }) => {
+  const getFavorites = useSelector(state => state.favorites)
+
+  const handleOnClick = (event) => {
+    if (event.target.nodeName === 'DIV') {
+      onClick()
+      return;
+    };
+
+    addFavorite()
   };
 
-  const handleOnClickFavorite = () => {
-
-  }
+  const isFav = getFavorites.includes(id);
 
   return (
     <div className={styles.card} onClick={handleOnClick}>
-      {userName && <div className={styles.name}>{userName} <img src={icon} className={styles.icon} onClick={handleOnClickFavorite} /></div>}
+      {userName && <div className={styles.name}>{userName} <img src={isFav ? starFill : star} className={styles.icon} /> </div>}
       <div>{company}</div>
       <div>{email}</div>
       <div>{albumName}</div>

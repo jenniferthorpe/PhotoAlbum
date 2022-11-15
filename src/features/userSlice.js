@@ -5,7 +5,8 @@ export const userSlice = createSlice({
   initialState: {
     userId: null,
     userName: null,
-    albumName: null
+    albumName: null,
+    favorites: []
   },
   reducers: {
     setUserId: (state, action) => {
@@ -15,12 +16,18 @@ export const userSlice = createSlice({
       state.userName = action.payload.name
     },
     setAlbumName: (state, action) => {
-      console.log('action', action)
       state.albumName = action.payload
+    },
+    saveFavorites: (state, action) => {
+      state.favorites = [...state.favorites, action.payload.id]
+    },
+    removeFavorites: (state, action) => {
+      const newArr = state.favorites.filter(e => e !== action.payload.id);
+      state.favorites = newArr;
     }
   }
 });
 
-export const { setUserId, setUserName, setAlbumName } = userSlice.actions
+export const { setUserId, setUserName, setAlbumName, saveFavorites, removeFavorites } = userSlice.actions
 
 export default userSlice.reducer
