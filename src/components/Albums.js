@@ -17,8 +17,14 @@ const Albums = () => {
   useEffect(() => {
     const getAlbums = async () => {
       const result = await fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`)
-        .then(response => response.json())
-        .catch(err => console.error(err)); //CHECK THIS
+        .then(response => {
+          if (!response.ok) {
+            return Promise.reject(response.status);
+          }
+
+          return response.json()
+        })
+        .catch(err => console.error('Error:', err));
 
       setAlbums(result);
     }
