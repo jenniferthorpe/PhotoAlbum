@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 
-import Albums from './Albums';
-import Title from './Title';
+import Albums from '../Albums';
+import Title from '../Title';
 import styles from './styles.module.css';
 
 const UserDetails = () => {
@@ -45,7 +45,7 @@ const UserDetails = () => {
   } = userData;
 
   return (
-    <div className={styles.wrapper}>
+    <>
       <Title center semiBold margin>{name}</Title>
       <div className={styles.userInfo}>
         <span>{companyName}</span>
@@ -55,7 +55,7 @@ const UserDetails = () => {
 
       <Title margin>Albums</Title>
       <Albums />
-    </div>
+    </>
   )
 };
 

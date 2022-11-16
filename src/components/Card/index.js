@@ -1,6 +1,6 @@
 import React from 'react';
-import star from '../images/Vector-Star_adobe_express.svg'
-import starFill from '../images/Vector-Star-fill_adobe_express.svg'
+import star from '../../images/Vector-Star_adobe_express.svg'
+import starFill from '../../images/Vector-Star-fill_adobe_express.svg'
 import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
 

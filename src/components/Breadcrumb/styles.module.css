@@ -1,0 +1,24 @@
+.breadcrumb {
+  width: 100%;
+  height: 37px;
+  background-color: rgb(238, 238, 238);
+  line-height: 35px;
+}
+
+.breadcrumb>a {
+  text-decoration: none;
+  margin: 0 0 0 10px;
+  color: blue;
+}
+
+.breadcrumb>a:nth-child(2n)::before {
+  content: '/';
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.breadcrumb>a:nth-child(3n)::before {
+  content: '/';
+  display: inline-block;
+  margin-right: 10px;
+}

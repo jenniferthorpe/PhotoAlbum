@@ -7,10 +7,10 @@ const Title = ({ bold, children, margin, semiBold, center }) => {
 
   return (
     <h1 className={cn({
-      [styles.titleBold]: bold,
-      [styles.titleMargin]: margin,
-      [styles.titleSemiBold]: semiBold,
-      [styles.titleCenter]: center
+      [styles.bold]: bold,
+      [styles.margin]: margin,
+      [styles.semiBold]: semiBold,
+      [styles.center]: center
     })}>
       {children}
     </h1>

@@ -1,0 +1,22 @@
+.card {
+  background-color: lightblue;
+  width: 250px;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px 20px 10px 0;
+  position: relative;
+}
+
+.card>div {
+  color: darkblue;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.icon {
+  width: 20px;
+  position: absolute;
+  right: 20px;
+}

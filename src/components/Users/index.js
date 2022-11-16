@@ -5,9 +5,9 @@ import {
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setUserId, setUserName, saveFavorites, removeFavorites } from '../features/userSlice';
-import Title from './Title';
-import Card from './Card';
+import { setUserId, setUserName, saveFavorites, removeFavorites } from '../../features/userSlice';
+import Title from '../Title';
+import Card from '../Card';
 import styles from './styles.module.css';
 
 const Users = () => {

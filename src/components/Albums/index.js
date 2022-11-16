@@ -4,8 +4,8 @@ import {
 } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 
-import Card from './Card';
-import { setAlbumName } from '../features/userSlice';
+import Card from '../Card';
+import { setAlbumName } from '../../features/userSlice';
 import styles from './styles.module.css';
 
 const Albums = () => {
@@ -48,7 +48,7 @@ const Albums = () => {
         <Card
           albumName={title}
           key={id}
-          onClick={() => handleOnClick(title, id)} //Title might not be needed as an arg. Get from api?
+          onClick={() => handleOnClick(title, id)}
         />
       ))}
     </div >

@@ -1,0 +1,7 @@
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  width: 75vw;
+  margin: 20px auto;
+  min-width: 800px;
+  max-width: 1000px;
+}
