@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  Switch,
   Route,
-  Routes,
-  Link
+  Routes
 } from "react-router-dom";
 
 import Users from './components/Users';

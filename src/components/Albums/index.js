@@ -40,7 +40,7 @@ const Albums = () => {
 
   if (!albums) {
     return null;
-  };
+  }
 
   return (
     < div className={styles.cardList} >

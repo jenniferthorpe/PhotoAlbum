@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import star from '../../images/Vector-Star_adobe_express.svg'
 import starFill from '../../images/Vector-Star-fill_adobe_express.svg'
-import { useSelector } from 'react-redux';
 import styles from './styles.module.css';
 
 const Card = ({ userName, company, email, id, onClick, albumName, addFavorite }) => {
@@ -11,7 +13,7 @@ const Card = ({ userName, company, email, id, onClick, albumName, addFavorite })
     if (event.target.nodeName === 'DIV') {
       onClick()
       return;
-    };
+    }
 
     addFavorite()
   };
@@ -27,5 +29,15 @@ const Card = ({ userName, company, email, id, onClick, albumName, addFavorite })
     </div>
   )
 };
+
+Card.propTypes = {
+  userName: PropTypes.string,
+  company: PropTypes.string,
+  email: PropTypes.string,
+  id: PropTypes.number,
+  onClick: PropTypes.func.isRequired,
+  albumName: PropTypes.string,
+  addFavorite: PropTypes.func
+}
 
 export default Card;

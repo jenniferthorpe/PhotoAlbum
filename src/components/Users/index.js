@@ -53,7 +53,7 @@ const Users = () => {
 
   if (!userData) {
     return null;
-  };
+  }
 
   return (
     <>

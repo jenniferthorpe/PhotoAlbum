@@ -43,7 +43,7 @@ const Photos = () => {
 
   if (!photos) {
     return null;
-  };
+  }
 
   return (
     <div>

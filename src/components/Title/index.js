@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.css';
 
@@ -16,5 +17,13 @@ const Title = ({ bold, children, margin, semiBold, center }) => {
     </h1>
   )
 };
+
+Title.propTypes = {
+  bold: PropTypes.bool,
+  children: PropTypes.any,
+  margin: PropTypes.bool,
+  semiBold: PropTypes.bool,
+  center: PropTypes.bool
+}
 
 export default Title;
